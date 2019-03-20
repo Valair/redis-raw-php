@@ -16,10 +16,10 @@ class PhpRedisAdapter extends AbstractRedisRawClient
     /** @var Redis */
     public $redis;
 
-    public function connect($hostname = '127.0.0.1', $port = 6379, $db = 0, $password = null): RedisRawClientInterface
+    public function connect($hostnames = '127.0.0.1', int $port = 6379, int $db = 0, string $password = null, array $options = null): RedisRawClientInterface
     {
         $this->redis = new Redis();
-        $this->redis->connect($hostname, $port);
+        $this->redis->connect($hostnames, $port);
         $this->redis->select($db);
         $this->redis->auth($password);
         return $this;

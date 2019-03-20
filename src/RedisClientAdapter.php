@@ -16,10 +16,10 @@ class RedisClientAdapter extends AbstractRedisRawClient
     /** @var AbstractRedisRawClient */
     public $redis;
 
-    public function connect($hostname = '127.0.0.1', $port = 6379, $db = 0, $password = null): RedisRawClientInterface
+    public function connect($hostnames = '127.0.0.1', int $port = 6379, int $db = 0, string $password = null, array $options = null): RedisRawClientInterface
     {
         $this->redis = new RedisClient([
-            'server' => "$hostname:$port",
+            'server' => "$hostnames:$port",
             'database' => $db,
             'password' => $password,
         ]);
